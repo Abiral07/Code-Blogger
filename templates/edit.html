@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <!-- Page Header -->
+<header class="masthead" style="background-image: url(' {{ url_for('static', filename='img/home-bg.jpg')}} ')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Edit</h1>
+            <span class="subheading">Manage your posts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h1>Basic Actions</h1>
+          <a class="btn btn-primary" href="/dashboard">Dashboard Home</a>
+          <a class="btn btn-primary" href="/logout">Logout</a>
+          <hr>
+          <h1>Add/Edit your posts</h1>
+            <form name="sentMessage" action="/edit/{{sno}}" aid="contactForm" novalidate method="POST">
+                <div class="control-group">
+                  <div class="form-group floating-label-form-group controls">
+                    <h5>Title:</h5>
+                    <label>Title</label>
+                    <input type="text" name="title" class="form-control" placeholder="title" id="title" required
+                      data-validation-required-message="Please enter new title" value="{{post.title}}">
+                    <p class="help-block text-danger"></p>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <div class="form-group floating-label-form-group controls">
+                    <h5>Sub-Title:</h5>
+                    <label>Sub Title</label>
+                    <input type="text" name="subtitle" class="form-control" placeholder="Sub-Title" id="subtitle" required
+                      data-validation-required-message="Please enter new subtitle." value="{{post.subtitle}}">
+                    <p class="help-block text-danger"></p>
+                  </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                      <h5>Image filename:</h5>
+                      <label>Image File</label>
+                      <input name="image" class="form-control" placeholder="Image file" id="image" required
+                        data-validation-required-message="Please select a image file." value="{{post.image}}">
+                      <p class="help-block text-danger"></p>
+                    </div>
+                  </div>
+                <div class="control-group">
+                  <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <h5>Tagline/Slug:</h5>
+                    <label>Slug</label>
+                    <input type="text" name="slug" class="form-control" placeholder="Slug" id="slug" required
+                      data-validation-required-message="Please enter slug for your post." value="{{post.slug}}">
+                    <p class="help-block text-danger"></p>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <div class="form-group floating-label-form-group controls">
+                    <h5>Author:</h5>
+                    <label>Author</label>
+                    <input type="text" name="author" class="form-control" placeholder="Author" id="author" required
+                    data-validation-required-message="Please enter the name of Author." value="{{post.author}}">
+                    <p class="help-block text-danger" ></p>
+                  </div> 
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                      <h5>Content:</h5>
+                      <label>Content</label>
+                      <textarea rows="5" name="content" class="form-control" placeholder="Content" id="content" required
+                        data-validation-required-message="Please post your content.">{{post.content}}</textarea>
+                      <p class="help-block text-danger"></p>
+                    </div>
+                  </div>
+                <br>
+                <div id="success"></div>
+                <button type="submit" class="btn btn-primary" id="sendMessageButton">Submit</button>
+              </form>
+        </div>
+    </div>
+  </div>
+
+{% endblock %}
